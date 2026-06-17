@@ -1,6 +1,6 @@
 اهلا وسهلا مالك https://t.me/HACKER_HROF
-
-
+python-telegram-bot
+httpx
 requests
 rich
 pystyle
