@@ -1,0 +1,8 @@
+اهلا وسهلا مالك https://t.me/HACKER_HROF
+
+
+requests
+rich
+pystyle
+pyfiglet
+colorama
