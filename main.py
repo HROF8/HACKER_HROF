@@ -1,21 +1,23 @@
-import asyncio, json, requests
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
+import os
+import requests
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 
 # --- الإعدادات ---
-BOT_TOKEN = "7803560556:AAGVUkCDp0169xM_up3PYpwbQKKoEIP9KWg"
+# لزيادة الأمان، يفضل استخدام متغيرات البيئة (Environment Variables)
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7803560556:AAGVUkCDp0169xM_up3PYpwbQKKoEIP9KWg")
 API_KEYS = {
     "cpm1": "AIzaSyBW1ZbMiUeDZHYUO2bY8Bfnf5rRgrQGPTM",
     "cpm2": "AIzaSyCQDz9rgjgmvmFkvVfmvr2-7fT4tfrzRRQ"
 }
 BASE_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty"
-SECRET_CODES = ["Telegram:@HACKER_HROF", "8526555112", "25555555", "HROF15223085"]
+SECRET_CODES = ["552665425", "8526555112", "25555555", "HROF15223085"]
 SIGNATURE = "\n\n👑 @HACKER_HROF"
 
 # --- الترجمات ---
 MESSAGES = {
     "ar": {
-        "welcome": "\n مرحباً بك في بوت حـــروف الــــمـــوت\n🔒 يرجى إدخال الرمز السري:",
+        "welcome": "👑@HACKER_HROF\n مرحباً بك في بوت حـــروف الــــمـــوت\n🔒 يرجى إدخال الرمز السري:",
         "invalid_code": "❌ الرمز السري غير صحيح!",
         "code_success": "✅ تم قبول الرمز السري! اختر إصدار اللعبة:",
         "email": "📧 الآن أرسل البريد الإلكتروني:",
@@ -26,10 +28,10 @@ MESSAGES = {
         "new_val": "أدخل القيمة الجديدة:",
         "done": "✅ تم التغيير بنجاح",
         "fail": "❌ لم ينجح التغيير",
-        "error": " خطأ في حساب او كلمه السر!"
+        "error": "خطأ في البيانات!"
     },
     "en": {
-        "welcome": "\n Welcome to Death Letters Bot\n🔒 Please enter the secret code:",
+        "welcome": "👑@HACKER_HROF\n Welcome to Death Letters Bot\n🔒 Please enter the secret code:",
         "invalid_code": "❌ Invalid secret code!",
         "code_success": "✅ Code accepted! Select game version:",
         "email": "📧 Now send the email:",
@@ -40,7 +42,7 @@ MESSAGES = {
         "new_val": "Enter new value:",
         "done": "✅ Changed successfully",
         "fail": "❌ Failed to change",
-        "error": "Account or password error !"
+        "error": "Data error!"
     }
 }
 
@@ -112,6 +114,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_handler))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
+    print("Bot is running...")
     app.run_polling()
 
 if __name__ == "__main__":
